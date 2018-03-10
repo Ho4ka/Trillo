@@ -55,4 +55,5 @@ body {
 
 .hotel-view {
   background-color: #fff;
+  text-emphasis: none;
   flex: 1; }
