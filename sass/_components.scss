@@ -13,6 +13,12 @@
   align-items: center;
   justify-content: center;
 
+  @media only screen and (max-width: $bp-smallest) {
+       order: 1;
+       flex: 0 0 100%;
+       background-color: var(--color-grey-light-2);
+  }
+
   &__input {
     font-family: inherit;
     font-size: inherit;
@@ -120,11 +126,25 @@
   list-style: none;
   margin-top: 3.5rem;
 
+  @media only screen and (max-width: $bp-medium) {
+    display: flex;
+    margin: 0;
+}
+
   &__item {
     position: relative;
 
     &:not(:last-child) {
       margin-bottom: 0.5rem;
+
+      @media only screen and (max-width: $bp-medium) {
+        margin: 0;
+    }
+    }
+
+    @media only screen and (max-width: $bp-medium) {
+     flex: 1; 
+     
     }
   }
 
@@ -164,12 +184,30 @@
 
     display: flex;
     align-items: center;
+
+    @media only screen and (max-width: $bp-medium) {
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    @media only screen and (max-width: $bp-medium) {
+      flex-direction: column;
+      padding: 1.5rem .5rem;
+    }
   }
   &__icon {
     margin-right: 2rem;
     width: 1.75rem;
     height: 1.75rem;
     fill: var(--color-grey-light-1);
+
+    @media only screen and (max-width: $bp-medium) {
+      margin-right: 0;
+      margin-bottom: .7rem;
+      width: 1.5rem;
+      height: 1.5rem;
+      margin: 0;
+  }
   }
 }
 
@@ -179,6 +217,10 @@
   text-align: center;
   padding: 2.5rem;
   color: currentColor;
+
+  @media only screen and (max-width: $bp-medium) {
+    display: none;
+  }
 }
 
 //Gallery
@@ -206,6 +248,11 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     padding: 1.5rem 3rem;
+
+    @media only screen and (max-width: $bp-small) {
+      font-size: 1.8rem;
+      padding: 1.25rem 2rem;
+    }
   }
 
   &__stars {
@@ -236,23 +283,36 @@
     color: #fff;
     align-self: stretch;
     padding: 0 2.25rem;
-
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    @media only screen and (max-width: $bp-small) {
+     padding: 0 1.5rem;
+    }
   }
 
   &__rating-average {
     font-size: 2.25rem;
     font-weight: 300;
     margin-bottom: -3px;
+
+    @media only screen and (max-width: $bp-small) {
+      font-size: 1.8rem;
+    }
   }
 
   &__rating-count {
     font-size: .8rem;
     text-transform: uppercase;
+
+    @media only screen and (max-width: $bp-small) {
+      font-size: .5rem;
+    }
   }
+
+  
 }
 
 //BUTTON-INLINE
@@ -268,9 +328,17 @@
   cursor: pointer;
   transition: all .2s;
 
+  & span {
+    margin-left: 3px;
+    transition: margin-left .2s;
+  }
+
   &:hover {
     color: var(--color-grey-dark-1);
     animation: pulsate 1s infinite;
+
+    span { margin-left: 8px;
+    }
   }
 
   &:focus {
@@ -368,7 +436,7 @@
     border: solid 3px #fff;
 
     &:not(:last-child) {
-      margin-right: -1.5rem;
+      margin-right: -2rem;
     }
   }
 }
@@ -381,32 +449,140 @@
   box-shadow: var(--shadow-light);
   padding: 3rem;
   margin-bottom: 3.5rem;
+  position: relative;
+  overflow: hidden;
+
+  @media only screen and (max-width: $bp-medium) {
+    padding: 2rem;
+    margin-bottom: 3rem;
+  }
 
   &__text {
-
+    margin-bottom: 2rem;
+    z-index: 2;
+    position: relative;
   }
 
   &__user {
+    display: flex;
+    align-items: center;
+    
+  }
 
+  &__friends {
+    display: flex;
   }
 
   &__photo {
-
+    height: 4.5rem;
+    width: 4.5rem;
+    border-radius: 50%;
+    margin-right: 1.5rem;
   }
 
   &__user-box {
-
+    margin-right: auto;
   }
 
   &__user-name {
-
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: .4em;
   }
 
   &__user-date {
-
+    font-size: 1rem;
+    color: var(--color-grey-dark-3);
   }
 
-  &__user-rating {
+  &__rating {
+    color: var(--color-primary);
+    font-size: 2.2rem;
+    font-weight: 300;
+  }
 
+  &::before {
+    content: "\201C";
+    position: absolute;
+    line-height: 1;
+    top: -2.75rem;
+    left: -1rem;
+    font-size: 20rem;
+    color: var(--color-grey-light-2);
+    font-family: sans-serif; 
+    z-index: 1;
+  }
+}
+
+
+//CALL TO ACTION 
+
+.cta {
+  padding: 3.5rem 0;
+  text-align: center;
+
+  @media only screen and (max-width: $bp-medium) {
+   padding: 2.5rem 0;
+  }
+
+  &__book-now {
+    font-size: 2rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    margin-bottom: 2.5rem;
+  }
+}
+
+//CALL TO ACTION 
+
+.btn {
+  font-size: 1.5rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  border-radius: 100px;
+  border: none;
+  background-image: linear-gradient(to right, var(--color-primary-light), var(--color-primary-dark));
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+
+  &__visible {
+    display: inline-block;
+    padding: 2rem 7.5rem;
+    height: 100%;
+    width: 100%;
+    transition: all .2s;
+  }
+
+  &__invisible {
+    display: inline-block;
+    position: absolute;
+    padding: 2rem 0;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: -100%;
+    transition: all .2s;
+  }
+
+  &:hover {
+    background-image: linear-gradient(to left, var(--color-primary-light), var(--color-primary-dark));
+  }
+
+  &:hover  &__visible {
+    transform: translateY(100%);
+ 
+  }
+
+  &:hover  &__invisible {
+    top: 0;
+ 
+  }
+
+  &:focus{
+    outline: none;
+    animation: pulsate infinite;
   }
 }
